@@ -57,9 +57,9 @@ syntax match  xcfgCommentSkip contained "^\s*"
 syntax match  xcfgNumber      "\(\d\+\)\|\(0x[a-fA-F\d]\+\)" contained
 "syntax region xcfgComment contained start="^\[COMMENTS\]"hs=s+2,ms=s+2 skip="^\s*$" end="^\["he=s-1,me=s-1 contains=xcfgTodo
 syntax region xcfgComment   start="^\[COMMENTS\]\n"ms=s,hs=s end="\n^\[VERSION_INFO_HEADER\]"he=s contains=xcfgTodo contained 
-syntax region xcfgObjDef    start="^\["ms=s-1 end="^\["me=e-1 contains=xcfgComment,xcfgObjType,xcfgSect,xcfgKeyword,xcfgStatementBlock fold 
+syntax region xcfgObjDef    start="^\["ms=s-1 end="^\["me=e-1 contains=xcfgComment,xcfgObjType,xcfgSect, xcfgNumber,xcfgKeyword,xcfgStatementBlock fold 
 "syntax region xcfgStatementBlock start="^\(\d\+\(\s\d\)\+\s\)\=\p\+=" end="$" contained contains=xcfgBitFieldAddrAndSize,xcfgStatement
-syntax match  xcfgStatementBlock      "^\d.*$" contained contains=xcfgBitFieldAddr,xcfgStatement
+syntax match  xcfgStatementBlock      "^\d.*$" contained contains=xcfgBitFieldAddr
 syntax match  xcfgBitFieldAddr        "^\d\+" contained nextgroup=xcfgBitFieldSize skipwhite
 syntax match  xcfgBitFieldSize        "\d\+" contained nextgroup=xcfgStatement skipwhite
 syntax match  xcfgStatement           "\u\h.\{-}$" contained contains=xcfgVariable,xcfgOperator,xcfgNumber 
